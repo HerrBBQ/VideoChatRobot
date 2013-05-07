@@ -611,36 +611,107 @@ namespace iRobotCreateControl
                 f.udpClientListener.BeginReceive(new AsyncCallback(ReceiveCallback), f);
         }
 
-
+        // edited by the bitshifters
         private void OnWheelDropChanged(object sender, EventArgs e)
         {
             if (!robot.prevSensorState.WheelDropLeft && robot.sensorState.WheelDropLeft)
-                Console.WriteLine("wheel left dropped!");
+            {
+              //  Console.WriteLine("wheel left dropped!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
             if (!robot.prevSensorState.WheelDropRight && robot.sensorState.WheelDropRight)
-                Console.WriteLine("wheel right dropped!");
+            {
+               // Console.WriteLine("wheel right dropped!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
             if (!robot.prevSensorState.WheelDropCaster && robot.sensorState.WheelDropCaster)
-                Console.WriteLine("wheel caster dropped!");
+            {
+            //    Console.WriteLine("wheel caster dropped!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
+
+            //turnback
+            if (robot.prevSensorState.WheelDropLeft && !robot.sensorState.WheelDropLeft)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
+            if (robot.prevSensorState.WheelDropRight && !robot.sensorState.WheelDropRight)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
+            if (robot.prevSensorState.WheelDropCaster && !robot.sensorState.WheelDropCaster)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
         }
 
+        //edited by the bitshifters
         private void OnCliffDetectChanged(object sender, EventArgs e)
         {
             if (!robot.prevSensorState.CliffLeft && robot.sensorState.CliffLeft)
-                Console.WriteLine("cliff left!");
+            {
+              //  Console.WriteLine("cliff left!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
             if (!robot.prevSensorState.CliffFrontLeft && robot.sensorState.CliffFrontLeft)
-                Console.WriteLine("cliff front left!");
+            {
+             //   Console.WriteLine("cliff front left!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
             if (!robot.prevSensorState.CliffFrontRight && robot.sensorState.CliffFrontRight)
-                Console.WriteLine("cliff front right!");
+            {
+              //  Console.WriteLine("cliff front right!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
             if (!robot.prevSensorState.CliffRight && robot.sensorState.CliffRight)
-                Console.WriteLine("cliff right!");
+            {
+              //  Console.WriteLine("cliff right!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
+
+            //turnback
+            if (robot.prevSensorState.CliffLeft && !robot.sensorState.CliffLeft)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
+            if (robot.prevSensorState.CliffRight && !robot.sensorState.CliffRight)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
+            if (robot.prevSensorState.CliffFrontLeft && !robot.sensorState.CliffFrontLeft)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
+            if (robot.prevSensorState.CliffFrontRight && !robot.sensorState.CliffFrontRight)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
         }
 
+        //edited by the bitshifters
         private void OnBumperChanged(object sender, EventArgs e)
         {
-            if(!robot.prevSensorState.BumpLeft && robot.sensorState.BumpLeft)
-                Console.WriteLine("bump left!");
+            if (!robot.prevSensorState.BumpLeft && robot.sensorState.BumpLeft)
+            {
+             //   Console.WriteLine("bump left!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
             if (!robot.prevSensorState.BumpRight && robot.sensorState.BumpRight)
-                Console.WriteLine("bump right!");
+            {
+               // Console.WriteLine("bump right!");
+                warningLabel.ForeColor = System.Drawing.Color.Red;
+            }
 
+
+            //turnback
+            if (robot.prevSensorState.BumpLeft && !robot.sensorState.BumpLeft)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
+            if (robot.prevSensorState.BumpRight && !robot.sensorState.BumpRight)
+            {
+                warningLabel.ForeColor = System.Drawing.Color.Silver;
+            }
         }
 
         private void OnSensorUpdate(object sender, EventArgs e)
@@ -1235,5 +1306,41 @@ namespace iRobotCreateControl
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+"))
                 e.Handled = true;
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+           
+        }
+        
+        // added by the bitshifters
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+            Application.Restart();
+        }
+        // added by the bitshifters
+        private void SingShifty_Click(object sender, EventArgs e)
+        {
+            robot.Sing();
+        }
+
+        
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblWheelVelocityR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

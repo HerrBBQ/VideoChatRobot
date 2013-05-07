@@ -20,6 +20,7 @@ namespace iRobot
             Spot = 134,
             Cover = 135,
             Demo = 136,
+            Pachelbel = 8,
             Drive = 137,
             LowSideDrivers = 138,
             LEDs = 139,
@@ -581,6 +582,7 @@ namespace iRobot
             SendCommand();
         }
 
+
         public void SoftReset()
         {
             if (drivingThread != null)
@@ -695,9 +697,6 @@ namespace iRobot
             try
             {
                 port.Write(messageBuffer, 0, messageIndex);
-//                for (int i = 0; i < messageIndex; i++)
-//                    Console.Out.Write((int)messageBuffer[i] + " ");
-//                Console.Out.WriteLine(" sent");
             }
             catch (Exception x)
             {
@@ -705,6 +704,15 @@ namespace iRobot
             }
             messageIndex = 0;
             Thread.Sleep(5);
+        }
+
+        //added by the bitshifters
+        public void Sing()
+        {
+            QueueCommand(OpCode.Start);
+            QueueCommand(OpCode.Demo);
+            QueueCommand(OpCode.Pachelbel);
+            SendCommand();
         }
     }
 
